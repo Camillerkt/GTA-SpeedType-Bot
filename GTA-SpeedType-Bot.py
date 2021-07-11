@@ -1,5 +1,14 @@
 # GTA SAMP SpeedType bot made by Camille Rakotoarisoa (https://camillerakoto.fr)
 
+"""
+Instructions :
+- pip install pynput
+- pip install pytesseract
+- pip install opencv-python
+-  Install Tesseract setup for Windows or brew install Tesseract for mac (and save the path)
+- pip install tesseract
+"""
+
 # cv2.cvtColor takes a numpy ndarray as an argument
 import numpy as nm
 #pip install pytesseract et télécharger Tesseract
@@ -45,13 +54,11 @@ class Bot:
 
 
 #Keyboard keys, Screen Resolution, Tesseract path
-bot = Bot({ 'tchat_key': 't' }, {'top':0, 'left':0, 'height':1366, 'width':768}, r'/usr/local/bin/tesseract')
+bot = Bot({ 'tchat_key': 't' }, {'top':0, 'left':0, 'height':1366, 'width':768}, r'C:\Program Files\Tesseract-OCR\tesseract.exe')
 code_begin = 'N/A'
-continue_record = True
 
-while continue_record:
+while True:
 	screen = bot.recordScreen()
 	code = bot.getTheCode(screen)
 	if code != None:
 		bot.enterTheCodeInChat(code)
-		continue_record = False
